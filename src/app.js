@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const errorHandler = require('./error-handler')
+const smsService = require('./smsService')
 
 const app = express()
 
@@ -16,6 +17,8 @@ app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
+
+app.use('/sms', smsService)
 
 app.use(errorHandler)
 
