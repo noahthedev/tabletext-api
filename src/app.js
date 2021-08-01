@@ -13,7 +13,6 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common'))
 app.use(helmet())
 app.use(cors())
 
-
 app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
