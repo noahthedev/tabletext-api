@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/waitlist', waitlistRouter)
+
 app.use('/sms', smsService)
 
 app.use(errorHandler)
