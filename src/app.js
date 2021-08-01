@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const errorHandler = require('./error-handler')
 const smsService = require('./smsService')
+const waitlistRouter = require('./waitlist/waitlist-router')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
+app.use('/waitlist', waitlistRouter)
 app.use('/sms', smsService)
 
 app.use(errorHandler)
