@@ -17,8 +17,7 @@ const serializeGuest = guest => ({
 waitlistRouter
   .route('/')
   .get((req, res, next) => {
-    const knexInstance = req.app.get('db')
-    WaitlistService.getAllGuests(knexInstance)
+    WaitlistService.getAllGuests(req.app.get('db'))
       .then(guests => {
         res.json(guests.map(serializeGuest))
       })
@@ -43,9 +42,8 @@ waitlistRouter
   waitlistRouter
     .route('/:id')
     .all((req, res, next) => {
-      const knexInstance = req.app.get('db')
       WaitlistService.getById(
-        knexInstance,
+        req.app.get('db'),
         req.params.id
       )
         .then(guest => {
@@ -55,7 +53,7 @@ waitlistRouter
             })
           }
           res.guest = guest
-          .next()
+          next()
         })
         .catch(next)
     })
@@ -63,9 +61,8 @@ waitlistRouter
       res.json(serializeGuest(res.guest))
     })
     .delete((req, res, next) => {
-      const knexInstance = req.app.get('db')
       WaitlistService.deleteGuest(
-        knexInstance,
+        req.app.get('db'),
         req.params.id
       )
       .then(res.status(204).end())
