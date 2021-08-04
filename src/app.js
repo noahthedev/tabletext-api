@@ -5,7 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const errorHandler = require('./error-handler')
-const smsService = require('./smsService')
+const smsService = require('./sms-service')
 const waitlistRouter = require('./waitlist/waitlist-router')
 
 const app = express()

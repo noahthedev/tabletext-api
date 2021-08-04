@@ -16,9 +16,22 @@ smsService
         from: '+12406182097',
         to: `${phone}`
       })
-      .then(res.send('SMS sent'))
-      .catch(err => console.log(err))
-  }) 
+      .then(message => {
+        if (message.sid) {
+          res.send({
+            "message":"SMS Sent"
+          })
+        }
+        console.log(message)
+      })
+      .catch(err => {
+        res.send({
+          "message":"Message Not Sent"
+        })
+        console.log(err)
+      })
+    })
 
 module.exports = smsService
 
+ 
