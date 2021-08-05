@@ -13,7 +13,7 @@ smsService
     client.messages
       .create({
         body: 'Your table is ready',
-        from: '+12406182097',
+        from: process.env.TWILIO_PHONE_NUMBER,
         to: `${phone}`
       })
       .then(message => {
