@@ -22,13 +22,11 @@ smsService
             "message":"SMS Sent"
           })
         }
-        console.log(message)
       })
       .catch(err => {
         res.send({
           "message":"Message Not Sent"
         })
-        console.log(err)
       })
     })
 
